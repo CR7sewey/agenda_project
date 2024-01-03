@@ -49,3 +49,6 @@ de admins para criar um user, sem que este seja super user
 no shell podemos fazer
 >>> from django.contrib.auth.models import User
 >>> user = User.objects.create_user(username='user2',password='123')
+
+11-
+Usar o script create_contacts para criar varios contactos python utils/create_contacts.py
