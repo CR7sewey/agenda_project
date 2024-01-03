@@ -20,3 +20,18 @@ criar superuser!! usuario com acesso a tudo dentro da bd e a base administrativa
 7 - models
 https://docs.djangoproject.com/pt-br/4.2/topics/db/models/
 https://docs.djangoproject.com/pt-br/4.2/ref/models/fields/#field-choices
+
+8- usar shell do django - 
+python manage.py shell
+from contact import models
+c = COntact(...)
+c.save()
+c.delete()
+d = Contact.objects.get(id=1)
+d.first_name = ...
+e = Contact.objects.all()
+for i in e:
+pritn...
+e = Contact.objects.filter(...)
+e = Contact.objects.order_by(...)
+e = Contact.objects.create(...)
