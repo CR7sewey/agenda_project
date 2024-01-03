@@ -23,6 +23,8 @@ class Contact(models.Model):
     # owner = models.ForeignKey()
     # picture = models.ImageField()
 
+    def __str__(self) -> str:
+        return f'{self.first_name} {self.last_name}'
 
 # class Category(models.Model):
 #    ...
