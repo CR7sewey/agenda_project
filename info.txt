@@ -8,3 +8,6 @@ gitignore e git fazer repo e cenas
 
 3 -
 criar app contact
+
+4-
+ir vendo commits!
