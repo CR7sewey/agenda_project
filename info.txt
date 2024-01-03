@@ -11,3 +11,8 @@ criar app contact
 
 4-
 ir vendo commits!
+
+6- 
+migrations - alteracao nos models aka na base de dados
+gera arquivos de migrcoes temso de fazer e/ou desfazer!!
+criar superuser!! usuario com acesso a tudo dentro da bd e a base administrativa!!
