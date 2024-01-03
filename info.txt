@@ -35,3 +35,9 @@ pritn...
 e = Contact.objects.filter(...)
 e = Contact.objects.order_by(...)
 e = Contact.objects.create(...)
+
+9 -
+to ImageField, we need to configurate MEDUA_URL AND MEDIA_ROOT in settings
+and also do the python manage.py collectstatic
+put static in gitignore!
+put media in gitignore!

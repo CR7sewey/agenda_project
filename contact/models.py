@@ -1,8 +1,10 @@
 
+from email.policy import default
 from django.utils import timezone
 from django.db import models
 
 # Create your models here.
+# migrate if some change!!
 
 # table contact
 
@@ -18,13 +20,16 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254, blank=True)
     created_data = models.DateTimeField(default=timezone.now)
     description = models.TextField(blank=True)
-    # category = models.ForeignKey(Category)
-    # show = models.BooleanField()
+    show = models.BooleanField(default=True)
+    # not necessary to put an image
+    # in media a pictures folder and a year and month folder are created
+    picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
     # owner = models.ForeignKey()
-    # picture = models.ImageField()
+    # category = models.ForeignKey(Category, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
 
-# class Category(models.Model):
-#    ...
+
+class Category(models.Model):
+    ...
