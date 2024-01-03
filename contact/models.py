@@ -1,5 +1,6 @@
 
 from email.policy import default
+from tabnanny import verbose
 from django.utils import timezone
 from django.db import models
 
@@ -12,6 +13,11 @@ from django.db import models
 
 
 class Category(models.Model):
+    # https://docs.djangoproject.com/pt-br/4.2/ref/models/options/
+    class Meta:  # change name of Model in django admin
+        verbose_name = "Category"  # https://www.youtube.com/watch?v=iIsLwz_vkzA
+        verbose_name_plural = "Categories"
+
     name = models.CharField(default='name', max_length=50)
 
     def __str__(self) -> str:
