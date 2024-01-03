@@ -3,4 +3,8 @@ Create virtual environment, install django
 to start a django project, run django-admin startproject project .
 
 2 -
-comandos pasta
+comandos pasta - readme.md
+gitignore e git fazer repo e cenas
+
+3 -
+criar app contact
