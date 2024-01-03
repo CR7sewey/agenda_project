@@ -41,3 +41,11 @@ to ImageField, we need to configurate MEDUA_URL AND MEDIA_ROOT in settings
 and also do the python manage.py collectstatic
 put static in gitignore!
 put media in gitignore!
+
+10- 
+podia criar um usuario mesmo, uma classe, dps no views fazia tipo um global user
+no entanto, para faciitar, vamos utilizar a cena do django
+de admins para criar um user, sem que este seja super user
+no shell podemos fazer
+>>> from django.contrib.auth.models import User
+>>> user = User.objects.create_user(username='user2',password='123')

@@ -1,6 +1,6 @@
 
 from email.policy import default
-from tabnanny import verbose
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import models
 
@@ -41,7 +41,8 @@ class Contact(models.Model):
     # ou outras cenas (meter nulo - SET_NULL)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
-    # owner = models.ForeignKey()
+    owner = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
