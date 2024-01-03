@@ -1,0 +1,6 @@
+1 - 
+Create virtual environment, install django
+to start a django project, run django-admin startproject project .
+
+2 -
+comandos pasta
