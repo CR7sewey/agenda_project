@@ -11,6 +11,13 @@ from django.db import models
 # id -> PRIMARY KEY - automatico
 
 
+class Category(models.Model):
+    name = models.CharField(default='name', max_length=50)
+
+    def __str__(self) -> str:
+        return f'{self.name}'
+
+
 class Contact(models.Model):
     # max num of char, not null and not blank!!
     first_name = models.CharField(max_length=50)  # , null=False, blank=False)
@@ -24,12 +31,11 @@ class Contact(models.Model):
     # not necessary to put an image
     # in media a pictures folder and a year and month folder are created
     picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
+    # on_delete - quando apagar a cateogry tmb apagar o Contact (models.CASCADE)
+    # ou outras cenas (meter nulo - SET_NULL)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True)
     # owner = models.ForeignKey()
-    # category = models.ForeignKey(Category, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
-
-
-class Category(models.Model):
-    ...
