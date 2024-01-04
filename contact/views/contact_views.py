@@ -1,4 +1,6 @@
-
+# https://docs.djangoproject.com/en/5.0/ref/paginator/
+# https://docs.djangoproject.com/en/5.0/topics/pagination/
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from contact.models import Contact
@@ -13,11 +15,16 @@ def index(request):
     # contacts = Contact.objects.all().order_by('-id') # show all!
     contacts = Contact.objects \
         .filter(show=True)\
-        .order_by('-id')[:10]  # show only show=True
+        .order_by('-id')  # show only show=True
 
-    print(contacts.query)  # just to see the query! check terminal!
+    # Put x number os contacts into each page
+    paginator = Paginator(contacts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
-    context = {"contacts": contacts, "site_title": 'Contacts - '}
+    # print(contacts.query)  # just to see the query! check terminal!
+
+    context = {"page_obj": page_obj, "site_title": 'Contacts - '}
     return render(
         request,
         'contact/index.html',
@@ -43,7 +50,12 @@ def search(request):
     # print(contacts.query)
     contacts = contacts.order_by('-id')
 
-    context = {"contacts": contacts,
+    # Put x number os contacts into each page
+    paginator = Paginator(contacts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {"page_obj": page_obj,
                "site_title": 'Contacts (search) - ', 'searched_value': searched_value}
 
     return render(
