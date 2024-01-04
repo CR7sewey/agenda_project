@@ -10,7 +10,7 @@ urlpatterns = [
 
     # contact (CRUD)
     path('contact/<int:contact_id>/detail/', views.contact, name='contact'),
-    # path('contact//create/', views.contact, name='contact'),  # no id yet
+    path('contact/create/', views.create, name='create'),  # no id yet
     # path('contact/<int:contact_id>/update/', views.contact, name='contact'),
     # path('contact/<int:contact_id>/delete/',
     #  views.contact, name='contact'),  # dangerous!

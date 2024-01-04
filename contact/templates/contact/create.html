@@ -1,0 +1,33 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+    <div>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>First Name: </b> <input type="text" placeholder="First Name" maxlength="50" required></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Last Name: </b> <input type="text" placeholder="Last Name"></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Phone: </b> <input type="text" placeholder="First Name"></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Email: </b> <input type="text" placeholder="First Name"></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Description: </b> <input type="text" placeholder="First Name"></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Picture: </b> <input type="text" placeholder="First Name"></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Category: </b> <input type="text" placeholder="First Name"></p>
+        </form>
+        <form action="{% url 'contact:create' %}" method="post">
+            <p><b>Owner: </b> <input type="text" placeholder="First Name"></p>
+        </form>
+
+    </div>
+        
+{% endblock content %}
+
