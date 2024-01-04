@@ -1,0 +1,30 @@
+<div>
+    <form action="{% url 'contact:create' %}" method="POST" enctype="multipart/form-data">
+        <p><label for="first_name"><b>First Name</b> </label><input type="text" placeholder="First Name" maxlength="50" name="first_name" required></p>
+   
+        <p><label for="last_name"><b>Last Name</b> </label><input type="text" placeholder="Last Name" maxlength="50" name="last_name"></p>
+   
+        <p><label for="phone"><b>Phone</b> <input type="text" placeholder="Phone" name="phone" required></p>
+    
+        <p><label for="email"><b>Email</b> <input type="email" id="email" name="email" placeholder="example@email.com"></p>
+    
+        <p><label for="description"><b>Description</b> <input type="text" placeholder="Description" name="description"></p>
+    
+        <p><label for="picture"><b>Picture</b> <input type="file" id="picture" name="picture" accept=".png,.jpg,.jpeg,images/*"></p>  
+
+        <p><label for="category"><b>Category</b> 
+            <select id="category" name="category">
+                <option value="friends" label="Friends" selected>
+                <option value="family" label="Family">
+                <option value="colleagues" label="Colleagues">
+            
+                </select></p>
+    
+        <p><label for="owner"><b>Owner</b> <input type="text" placeholder="Owner" name="owner"></p>
+        <p>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </p>
+    </form>
+
+</div>
