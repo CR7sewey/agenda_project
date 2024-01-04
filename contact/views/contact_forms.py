@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from contact.models import Contact
 from django.http import Http404, HttpRequest, HttpResponse
 from django import forms
-from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 # Create your views here.
 
 
@@ -12,6 +13,14 @@ class ContactForm(forms.ModelForm):
         fields = ('first_name', 'last_name',
                   'phone',)  # , 'email', 'description',
         # 'show', 'picture', 'category', 'owner',)
+
+    def clean(self):  # sobrescrever metodo
+        cleaned_data = self.cleaned_data  # data before added to database
+
+        self.add_error(
+            None,  # or first_name for ex - atrelar a um campo
+            ValidationError('Error:', code='invalid')
+        )
 
 
 def create(request):
