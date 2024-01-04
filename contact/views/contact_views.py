@@ -44,7 +44,7 @@ def search(request):
     contacts = contacts.order_by('-id')
 
     context = {"contacts": contacts,
-               "site_title": 'Contacts (search) - '}
+               "site_title": 'Contacts (search) - ', 'searched_value': searched_value}
 
     return render(
         request,
