@@ -16,7 +16,7 @@ def index(request):
 
     print(contacts.query)  # just to see the query! check terminal!
 
-    context = {"contacts": contacts}
+    context = {"contacts": contacts, "site_title": 'Contacts - '}
     return render(
         request,
         'contact/index.html',
@@ -36,7 +36,8 @@ def contact(request: HttpRequest, contact_id: int) -> HttpResponse:
     contacts = get_object_or_404(
         Contact, pk=contact_id, show=True)  # pk and show
 
-    context = {"contact": contacts}
+    context = {"contact": contacts, "site_title": f'{
+        contacts.first_name} {contacts.last_name} - '}
     return render(
         request,
         'contact/contact.html',
