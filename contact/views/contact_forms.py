@@ -19,22 +19,32 @@ def create(request):
         # category = request.POST.get('category', '').strip()
         # owner = request.POST.get('owner', '').strip()
 
-        # first_name, last_name, phone)  # , email,
         form = ContactForm(request.POST)
-        # description, show, picture, category, owner)
 
         # if form.is_valid():
         context = {"form": form}
 
-        # context = {"page_obj": page_obj, "site_title": 'Contacts - '}
+        if form.is_valid():  # true if all validations are passed!
+            contact = form.save(commit=False)  # commit dont allow saving!
+            # contact.show = False
+            contact.save()  # save in database
+            # template = f'contact/{contact.id}/detail/'
+            return redirect('contact:create')  # clean form
+
+        # id = contact.fields.get("id")
+        # return redirect('contact:index')
+        # return render(
+        #    request,
+        #    'contact/contact.html',
+        #   {'contact': contact})
+        # return redirect(template)
         return render(
             request,
             'contact/create.html',
-            context
-        )
+            context)
+
     # else:  # GET!
     context = {"form": ContactForm()}
-
     # context = {"page_obj": page_obj, "site_title": 'Contacts - '}
     return render(
         request,
