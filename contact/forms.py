@@ -30,8 +30,8 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = models.Contact
         fields = ('first_name', 'last_name',
-                  'phone',)  # , 'email', 'description',
-        # 'show', 'picture', 'category', 'owner',)
+                  'phone', 'email', 'description',
+                  'category',)
 
         # https://docs.djangoproject.com/en/5.0/ref/forms/widgets/
         # campo a ser renderizado! ex forms.PasswordInput()
