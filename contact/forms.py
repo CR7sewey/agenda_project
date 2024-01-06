@@ -15,7 +15,7 @@ class ContactForm(forms.ModelForm):
     picture = forms.ImageField(
         widget=forms.FileInput(
             attrs={
-                'accept': 'iamge/*',  # restirct the type of input
+                'accept': 'image/*',  # restirct the type of input
             }
         )
     )
