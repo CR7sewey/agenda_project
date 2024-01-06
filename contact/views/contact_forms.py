@@ -29,7 +29,7 @@ def create(request):
         # category = request.POST.get('category', '').strip()
         # owner = request.POST.get('owner', '').strip()
 
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)  # FILES os arquicos
 
         # if form.is_valid():
         context = {"form": form, "form_action": form_action}
@@ -71,7 +71,8 @@ def update(request, contact_id):
     # print(actual_contact.first_name)
     if request.method == 'POST':  # pq pode ser get a vir de la tmb!
 
-        form = ContactForm(data=request.POST, instance=actual_contact)
+        form = ContactForm(request.POST, request.FILES,
+                           instance=actual_contact)
 
         # if form.is_valid():
         context = {"form": form, "form_action": form_action}

@@ -12,6 +12,14 @@ class ContactForm(forms.ModelForm):
         label='First Name'
     )
 
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'iamge/*',  # restirct the type of input
+            }
+        )
+    )
+
     # criar campo aqui sem ser no models!
     # qualquer = forms.CharField(
     #    widget=forms.TextInput(attrs={'class': 'class-a class-b',
@@ -31,7 +39,7 @@ class ContactForm(forms.ModelForm):
         model = models.Contact
         fields = ('first_name', 'last_name',
                   'phone', 'email', 'description',
-                  'category',)
+                  'category', 'picture',)
 
         # https://docs.djangoproject.com/en/5.0/ref/forms/widgets/
         # campo a ser renderizado! ex forms.PasswordInput()
