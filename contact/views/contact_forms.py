@@ -104,3 +104,35 @@ def update(request, contact_id):
         request,
         'contact/create.html',
         context)
+
+
+def delete(request, contact_id):
+    actual_contact = get_object_or_404(  # buscar instancia de um objeto ja existente! para o forma ja ter os dados do contacto ja existente,
+        Contact, pk=contact_id, show=True)
+
+    if request.method == 'POST':  # pq pode ser get a vir de la tmb!
+
+        confirmation = request.POST.get(
+            "confirmation", 'no').strip()  # from input (value)
+
+        if confirmation == 'yes':  # value
+            actual_contact.delete()
+            return redirect('contact:index')
+
+        return render(
+            request,
+            'contact/contact.html',
+            {
+                'contact': actual_contact,
+                'confirmation': confirmation,
+            }
+        )
+
+    # NUNCA ENTRA!
+    # else:  # GET! primeiro entra sempre aqui, pq o get tmb é para quando busca o template em si, ou qunado pagina atualizada etc
+    context = {"contact": actual_contact, 'confirmation': 'no'}
+    # context = {"page_obj": page_obj, "site_title": 'Contacts - '}
+    return render(
+        request,
+        'contact/contact.html',
+        context)
