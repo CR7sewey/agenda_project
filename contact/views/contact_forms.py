@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, HttpRequest, HttpResponse
 from contact.forms import ContactForm
 from django.urls import reverse
+from django.contrib import messages
+
 
 from contact.models import Contact
 
@@ -40,6 +42,7 @@ def create(request):
             contact.save()  # save in database
             # template = f'contact/{contact.id}/detail/'
             # clean form, redireciona para o upate que por consequensia vai oara o views do update
+           # messages.success(request, 'New contact created!') could put!
             return redirect('contact:update', contact_id=contact.id)
 
         # id = contact.fields.get("id")

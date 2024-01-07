@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import Http404, HttpRequest, HttpResponse
-from django.urls import reverse
 from contact.forms import RegisterForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def register(request):
 
+    messages.info(request, 'Introduce a new user')
     if request.method == 'POST':
         form = RegisterForm(request.POST)
 
@@ -18,6 +18,7 @@ def register(request):
             # if user_email_exists:
             #    raise Http404('CACETA')
             form.save()
+            messages.success(request, 'User registered!')
             return redirect('contact:index')
 
         return render(request,
