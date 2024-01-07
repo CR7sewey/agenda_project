@@ -39,11 +39,12 @@ def create(request):
 
         if form.is_valid():  # true if all validations are passed!
             contact = form.save(commit=False)  # commit dont allow saving!
+            contact.owner = request.user  # mete o owner como quem criou!!
             # contact.show = False
             contact.save()  # save in database
             # template = f'contact/{contact.id}/detail/'
             # clean form, redireciona para o upate que por consequensia vai oara o views do update
-           # messages.success(request, 'New contact created!') could put!
+            # messages.success(request, 'New contact created!') could put!
             return redirect('contact:update', contact_id=contact.id)
 
         # id = contact.fields.get("id")
@@ -72,7 +73,8 @@ def create(request):
 def update(request, contact_id):
     form_action = reverse('contact:update', args=(contact_id,))
     actual_contact = get_object_or_404(  # buscar instancia de um objeto ja existente! para o forma ja ter os dados do contacto ja existente,
-        Contact, pk=contact_id, show=True)
+        # impede a edicao por outro usuario (para ver isso tirar do template a condicao que esconde os botoes (if))
+        Contact, pk=contact_id, show=True, owner=request.user)
     # print(actual_contact.first_name)
     if request.method == 'POST':  # pq pode ser get a vir de la tmb!
 

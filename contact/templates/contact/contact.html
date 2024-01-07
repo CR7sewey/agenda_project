@@ -11,13 +11,14 @@
         <p><b>Date created:</b> {{ contact.created_data }}</p>
         <p><b>Description:</b> {{ contact.description }}</p>
         <p><b>Category:</b> {{ contact.category.name }}</p>
+        <p><b>Owner:</b> {{ contact.owner.username }}</p>
         {% if contact.picture %}
         <p><b>Image:</b>
             <img src="{{ contact.picture.url }}" alt = "{{contact.first_name}} {{contact.last_name}}">
         </p>
         {% endif %}
-        {% comment " the if here is just to not appear the buttons update and delete is user not loggined" %}{% endcomment %}
-        {% if user.is_authenticated %}
+        {% comment " the if here is just to not appear the buttons update and delete is user not loggined and owner is user" %}{% endcomment %}
+        {% if user.is_authenticated and user.username == contact.owner.username %}
         <div class="contact-links">
             <a class="btn btn-link" href="{% url 'contact:update' contact.id %}">Update</a>
       

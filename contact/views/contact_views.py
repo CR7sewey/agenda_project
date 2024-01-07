@@ -15,7 +15,7 @@ def index(request):
     # contacts = Contact.objects.all().order_by('-id') # show all!
     contacts = Contact.objects \
         .filter(show=True)\
-        .order_by('-id')  # show only show=True
+        .order_by('-id')  # show only show=True, if , owner=request.user so veria os usuarios que este bacano é dono
 
     # Put x number os contacts into each page
     paginator = Paginator(contacts, 10)
