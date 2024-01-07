@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from . import models
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 
@@ -179,3 +179,46 @@ class RegisterForm(UserCreationForm):
             )
 
         return last_name'''
+
+
+'''
+class AuthForm(AuthenticationForm):
+    username = forms.CharField(
+        widget=forms.TextInput(),
+        label='Username',
+        required=True
+    )
+
+    password = forms.CharField(
+        widget=forms.PasswordInput(),
+        label='Password',
+        required=True
+    )
+
+    class Meta:
+        model = User
+        fields = ('username', 'password',)
+
+    def clean(self):
+
+        cleaned_data = self.cleaned_data  # data before added to database
+
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+        # p campo password ja valida isto !!
+        if User.objects.filter(username=username).get('password') != password:
+            self.add_error('password',
+                           ValidationError('Passoword doesn\'t match with this username :(',
+                                           code='invalid'))
+
+        return super().clean()
+
+    def clean_username(self):
+        username = self.cleaned_data.get('email')
+        # check if email exists
+        if not User.objects.filter(username=username).exists():
+            self.add_error('username',
+                           ValidationError('Username does not exists!',
+                                           code='invalid'))
+        return username
+'''
