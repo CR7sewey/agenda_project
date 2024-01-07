@@ -19,8 +19,9 @@ class ContactForm(forms.ModelForm):
         widget=forms.FileInput(
             attrs={
                 'accept': 'image/*',  # restirct the type of input
-            }
-        )
+            },
+        ),
+        required=False
     )
 
     # criar campo aqui sem ser no models!

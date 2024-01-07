@@ -18,7 +18,7 @@
         </p>
         {% endif %}
         {% comment " the if here is just to not appear the buttons update and delete is user not loggined and owner is user" %}{% endcomment %}
-        {% if user.is_authenticated and user.username == contact.owner.username %}
+        {% if user.is_authenticated and user == contact.owner %}
         <div class="contact-links">
             <a class="btn btn-link" href="{% url 'contact:update' contact.id %}">Update</a>
       
