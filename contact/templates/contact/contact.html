@@ -16,7 +16,8 @@
             <img src="{{ contact.picture.url }}" alt = "{{contact.first_name}} {{contact.last_name}}">
         </p>
         {% endif %}
-
+        {% comment " the if here is just to not appear the buttons update and delete is user not loggined" %}{% endcomment %}
+        {% if user.is_authenticated %}
         <div class="contact-links">
             <a class="btn btn-link" href="{% url 'contact:update' contact.id %}">Update</a>
       
@@ -30,5 +31,6 @@
                 {% endif %}
             </form>
           </div>
+          {% endif %}
     </div>
 {% endblock content %}

@@ -3,7 +3,7 @@ from django.http import Http404, HttpRequest, HttpResponse
 from contact.forms import ContactForm
 from django.urls import reverse
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 
 from contact.models import Contact
 
@@ -15,6 +15,7 @@ from contact.models import Contact
 # 5º views update (get) (render template create with the previous contact); 6 º -> new info; send, POST
 
 
+@login_required(login_url='contact:login')
 def create(request):
     # url a carregar a view! buscar dentro do template a url
     form_action = reverse('contact:create')
@@ -67,6 +68,7 @@ def create(request):
         context)
 
 
+@login_required(login_url='contact:login')
 def update(request, contact_id):
     form_action = reverse('contact:update', args=(contact_id,))
     actual_contact = get_object_or_404(  # buscar instancia de um objeto ja existente! para o forma ja ter os dados do contacto ja existente,
@@ -110,6 +112,7 @@ def update(request, contact_id):
         context)
 
 
+@login_required(login_url='contact:login')
 def delete(request, contact_id):
     actual_contact = get_object_or_404(  # buscar instancia de um objeto ja existente! para o forma ja ter os dados do contacto ja existente,
         Contact, pk=contact_id, show=True)
