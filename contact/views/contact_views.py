@@ -77,8 +77,7 @@ def contact(request: HttpRequest, contact_id: int) -> HttpResponse:
     contacts = get_object_or_404(
         Contact, pk=contact_id, show=True)  # pk and show
 
-    context = {"contact": contacts, "site_title": f'{
-        contacts.first_name} {contacts.last_name} - '}
+    context = {"contact": contacts}
     return render(
         request,
         'contact/contact.html',
