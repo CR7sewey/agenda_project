@@ -9,6 +9,9 @@ media/
 project/local_settings.py
 gunicorn-error-log
 __localcode
+apagar.txt
+apagar2.txt
+daqui_para_server.txt
 
 # Backup files #
 *.bak

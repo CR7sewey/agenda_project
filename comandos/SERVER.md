@@ -90,11 +90,11 @@ git pull agendarepo main
 ```
 sudo -u postgres psql
 
-postgres=# create role usuario_agenda with login superuser createdb createrole password 'senha_usuario_agenda';
+postgres=# create role user_agenda with login superuser createdb createrole password 'senha_user_agenda';
 CREATE ROLE
-postgres=# create database base_de_dados with owner usuario_agenda;
+postgres=# create database base_de_dados2 with owner user_agenda;
 CREATE DATABASE
-postgres=# grant all privileges on database base_de_dados to usuario_agenda;
+postgres=# grant all privileges on database base_de_dados2 to user_agenda;
 GRANT
 postgres=# \q
 
@@ -118,7 +118,7 @@ python3.11 -m venv venv
 pip install --upgrade pip
 pip install django
 pip install pillow
-pip install gunicorn
+pip install gunicorn # subir aplicacao djangp
 pip install psycopg
 pip install faker
 
